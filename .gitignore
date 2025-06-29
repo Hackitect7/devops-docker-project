@@ -1,0 +1,48 @@
+# ========== Node.js ==========
+# Игнорировать папку с зависимостями фронтенда
+frontend/node_modules/
+# npm временные файлы
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========== Python ==========
+# Кеш-компиляции Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Виртуальное окружение Python, если создавал
+venv/
+env/
+
+# ========== Docker ==========
+# Исключить временные файлы Docker (если такие появятся)
+*.pid
+*.seed
+*.pid.lock
+
+# ========== System ==========
+# Файлы IDE и редакторов
+.vscode/
+.idea/
+
+# Файлы macOS и Windows
+.DS_Store
+Thumbs.db
+
+# ========== Git ==========
+# Git hooks и временные файлы
+*.orig
+
+# ========== Logs ==========
+*.log
+
+# ========== Secret configs (по желанию) ==========
+# .env файлы, если хранишь пароли локально
+.env
+.env.*
+
+# ========== Build outputs (если собираешь фронтенд) ==========
+frontend/dist/
+frontend/build/
