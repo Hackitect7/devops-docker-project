@@ -16,7 +16,6 @@ venv/
 
 # Docker
 .dockerignore
-Dockerfile*
 
 # macOS / Windows
 .DS_Store
