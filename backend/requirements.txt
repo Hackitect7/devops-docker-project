@@ -1,1 +1,16 @@
+# ------------------------------------------------------------------------------
+# requirements.txt — Python project dependency file
+#
+# Description:
+# This file lists the Python libraries required for the application to run.
+# When building a Docker image or installing locally with pip,
+# all packages listed here will be installed automatically.
+# ------------------------------------------------------------------------------
+
+# Flask — a lightweight and popular framework for building web applications in Python
 flask
+
+# If you need additional libraries in the future, add them here.
+# For example:
+# requests==2.28.1  # for making HTTP requests
+# gunicorn          # for running Flask in production (optional)

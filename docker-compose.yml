@@ -1,23 +1,27 @@
+# docker-compose.yml — used for local development
+# This file extends the production setup to build images locally instead of pulling from Docker Hub
+# It also adds developer-friendly options for easier debugging and testing
+
 services:
-  backend:
-    build: ./backend
-    container_name: flask-api
+  backend:  # Backend service — Flask API
+    build: ./backend  # Build the Docker image from the local 'backend' directory using its Dockerfile
+    container_name: flask-api  # Name the container for easier debugging and referencing
     expose:
-      - 5000
+      - 5000  # Expose port 5000 to other containers (not accessible directly from the host machine)
 
-  frontend:
-    build: ./frontend
-    container_name: node-frontend
+  frontend:  # Frontend service — Node.js app
+    build: ./frontend  # Build the Docker image from the local 'frontend' directory
+    container_name: node-frontend  # Name the container for clarity
     expose:
-      - 3000
+      - 3000  # Expose port 3000 for internal access within the Docker network
 
-  nginx:
-    image: nginx:alpine
-    container_name: nginx-proxy
+  nginx:  # Nginx service — acts as a reverse proxy
+    image: nginx:alpine  # Use the lightweight Alpine-based nginx image
+    container_name: nginx-proxy  # Set container name for easier management
     ports:
-      - "80:80"
+      - "80:80"  # Map port 80 from container to host so the app is reachable via browser (http://localhost)
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Mount the local nginx configuration file as read-only
+    depends_on:  # Ensure nginx starts only after backend and frontend containers are ready
       - backend
       - frontend

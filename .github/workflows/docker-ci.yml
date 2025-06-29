@@ -1,57 +1,57 @@
-# ---------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # 📦 GitHub Actions: docker-ci.yml
-# Назначение: автоматическая сборка и публикация Docker-образов 
-# при каждом push в ветку `main`.
-# Используется CI/CD (Continuous Integration & Delivery).
+# Purpose: Automatically build and publish Docker images 
+# on every push to the `main` branch.
+# This is a CI/CD workflow (Continuous Integration & Delivery).
 #
-# Что делает:
-# 1. Клонирует код проекта.
-# 2. Логинится в Docker Hub.
-# 3. Собирает backend и frontend образы.
-# 4. Загружает их в Docker Hub.
-# ---------------------------------------------------------------
+# What it does:
+# 1. Clones the project code.
+# 2. Logs into Docker Hub.
+# 3. Builds backend and frontend Docker images.
+# 4. Pushes these images to Docker Hub.
+# -----------------------------------------------------------------------------
 
-name: Docker CI  # Имя workflow, которое отображается на GitHub
+name: Docker CI  # Workflow name shown on GitHub
 
 on:
   push:
-    branches: [ main ]  # 👉 Запускать только при пуше в ветку "main"
+    branches: [ main ]  # 👉 Run only when pushing to the "main" branch
 
 jobs:
-  build:  # 👷 Название задачи (job)
-    runs-on: ubuntu-latest  # 🔧 GitHub Actions запустит виртуальный сервер с Ubuntu
+  build:  # 👷 Job name
+    runs-on: ubuntu-latest  # 🔧 GitHub Actions will run on an Ubuntu VM
 
-    steps:  # 📋 Шаги, которые будут выполняться последовательно
+    steps:  # 📋 Steps executed sequentially
 
-      - name: Checkout code  # 🧾 Шаг 1: Склонировать репозиторий
-        uses: actions/checkout@v3  # 📥 GitHub официальная экшн для checkout
+      - name: Checkout code  # 🧾 Step 1: Clone the repository
+        uses: actions/checkout@v3  # 📥 Official GitHub checkout action
 
-      - name: Set up Docker Buildx  # 🧰 Шаг 2: Настроить Buildx — надстройка Docker для расширенной сборки
-        uses: docker/setup-buildx-action@v3  # 📦 Action для установки buildx
+      - name: Set up Docker Buildx  # 🧰 Step 2: Setup Buildx — Docker extension for advanced builds
+        uses: docker/setup-buildx-action@v3  # 📦 Action to install buildx
 
-      - name: Login to Docker Hub  # 🔐 Шаг 3: Авторизация в Docker Hub для загрузки образов
-        uses: docker/login-action@v3  # 🛂 Официальный способ логина
+      - name: Login to Docker Hub  # 🔐 Step 3: Authenticate to Docker Hub to push images
+        uses: docker/login-action@v3  # 🛂 Official login method
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}  # 🔒 Имя пользователя берется из секретов GitHub
-          password: ${{ secrets.DOCKER_PASSWORD }}  # 🔒 Токен/пароль тоже из секретов (безопасно)
+          username: ${{ secrets.DOCKER_USERNAME }}  # 🔒 Username from GitHub secrets
+          password: ${{ secrets.DOCKER_PASSWORD }}  # 🔒 Password or token from secrets (secure)
 
-      - name: Build and push backend  # ⚙️ Шаг 4: Собрать и отправить backend-образ
-        uses: docker/build-push-action@v5  # 🛠️ Action для сборки и загрузки Docker образов
+      - name: Build and push backend  # ⚙️ Step 4: Build and push backend image
+        uses: docker/build-push-action@v5  # 🛠️ Build and push Docker images
         with:
-          context: ./backend  # 📁 Контекст сборки — папка backend
-          tags: ${{ secrets.DOCKER_USERNAME }}/flask-api:latest  # 🏷️ Имя образа: dockerhub_user/flask-api
-          push: true  # 📤 Обязательно загрузить образ после сборки
+          context: ./backend  # 📁 Build context — backend folder
+          tags: ${{ secrets.DOCKER_USERNAME }}/flask-api:latest  # 🏷️ Image name: dockerhub_user/flask-api
+          push: true  # 📤 Push the image after build
 
-      - name: Build and push frontend  # ⚙️ Шаг 5: Собрать и отправить frontend-образ
-        uses: docker/build-push-action@v5  # 🛠️ То же самое, но для фfrontend
+      - name: Build and push frontend  # ⚙️ Step 5: Build and push frontend image
+        uses: docker/build-push-action@v5  # 🛠️ Same as above, for frontend
         with:
-          context: ./frontend  # 📁 Контекст сборки — папка frontend
-          tags: ${{ secrets.DOCKER_USERNAME }}/node-frontend:latest  # 🏷️ Имя образа: dockerhub_user/node-frontend
-          push: true  # 📤 Загружаем в Docker Hub
+          context: ./frontend  # 📁 Build context — frontend folder
+          tags: ${{ secrets.DOCKER_USERNAME }}/node-frontend:latest  # 🏷️ Image name: dockerhub_user/node-frontend
+          push: true  # 📤 Push the image to Docker Hub
 
-      - name: Build and push nginx  # ⚙️ Шаг 6: Собрать и отправить nginx-образ
-        uses: docker/build-push-action@v5  # 🛠️ То же самое, но для  nginx
+      - name: Build and push nginx  # ⚙️ Step 6: Build and push nginx image
+        uses: docker/build-push-action@v5  # 🛠️ Same, for nginx
         with:
-          context: ./nginx  # 📁 Контекст сборки — папка nginx
-          tags: ${{ secrets.DOCKER_USERNAME }}/nginx:latest  # 🏷️ Имя образа: dockerhub_user/nginx
-          push: true  # 📤 Загружаем в Docker Hub
+          context: ./nginx  # 📁 Build context — nginx folder
+          tags: ${{ secrets.DOCKER_USERNAME }}/nginx:latest  # 🏷️ Image name: dockerhub_user/nginx
+          push: true  # 📤 Push the image to Docker Hub
