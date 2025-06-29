@@ -1,0 +1,36 @@
+{
+  // --------------------------------------------------------------
+  // package.json — metadata and configuration for the frontend Node.js project
+  //
+  // Purpose:
+  // This file defines project metadata, required dependencies, and scripts
+  // used to manage and run the Node.js frontend application.
+  //
+  // Key sections:
+  // - name and version — name and version of the project
+  // - main — the entry point file
+  // - scripts — custom npm commands
+  // - dependencies — packages needed to run the app
+  // --------------------------------------------------------------
+
+  "name": "frontend",          // Project name — 'frontend'
+  "version": "1.0.0",          // Project version
+  "main": "index.js",          // Entry point — where the application starts execution
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"  
+    // Test script — currently a placeholder that throws an error (can be replaced with real tests)
+  },
+
+  "keywords": [],              // Optional: keywords to help others find this package
+
+  "author": "",                // Author of the project (currently empty, can be filled in)
+
+  "license": "ISC",            // License type (ISC — an open-source license)
+
+  "description": "",           // Optional: short description of the project
+
+  "dependencies": {
+    "express": "^5.1.0"        // Required package — Express framework version 5.1.0 or compatible (caret ^ means it will update minor versions)
+  }
+}
