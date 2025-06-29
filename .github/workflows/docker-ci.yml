@@ -43,8 +43,15 @@ jobs:
           push: true  # 📤 Обязательно загрузить образ после сборки
 
       - name: Build and push frontend  # ⚙️ Шаг 5: Собрать и отправить frontend-образ
-        uses: docker/build-push-action@v5  # 🛠️ То же самое, но для фронтенда
+        uses: docker/build-push-action@v5  # 🛠️ То же самое, но для фfrontend
         with:
           context: ./frontend  # 📁 Контекст сборки — папка frontend
           tags: ${{ secrets.DOCKER_USERNAME }}/node-frontend:latest  # 🏷️ Имя образа: dockerhub_user/node-frontend
+          push: true  # 📤 Загружаем в Docker Hub
+
+      - name: Build and push nginx  # ⚙️ Шаг 6: Собрать и отправить nginx-образ
+        uses: docker/build-push-action@v5  # 🛠️ То же самое, но для  nginx
+        with:
+          context: ./nginx  # 📁 Контекст сборки — папка nginx
+          tags: ${{ secrets.DOCKER_USERNAME }}/nginx:latest  # 🏷️ Имя образа: dockerhub_user/nginx
           push: true  # 📤 Загружаем в Docker Hub
