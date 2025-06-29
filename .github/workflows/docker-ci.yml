@@ -1,0 +1,36 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ main ]  # Запускается только при пуше в main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # GitHub запускает виртуалку на Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Клонирует репозиторий на runner
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3  # Расширение Docker для кросс-платформенных сборок
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          tags: ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
+          push: true
+
+      - name: Build and push frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          tags: ${{ secrets.DOCKER_USERNAME }}/node-frontend:latest
+          push: true
