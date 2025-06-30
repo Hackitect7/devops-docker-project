@@ -1,24 +1,24 @@
-# 📘 ОПИСАНИЕ ПРОЕКТА
+# 📘 PROJECT DESCRIPTION
 
-Этот проект демонстрирует реализацию профессионального **CI/CD** пайплайна с использованием **Docker** и **GitHub Actions**.
-
----
-
-## 🔍 Основные компоненты проекта
-
-Проект включает три контейнеризированных модуля:
-
-- **Backend**: Flask-приложение (Python API)
-- **Frontend**: веб-интерфейс на Node.js (Express)
-- **Reverse Proxy**: сервер на базе Nginx
+This project demonstrates the implementation of a professional **CI/CD** pipeline using **Docker** and **GitHub Actions**.
 
 ---
 
-## 🎯 Цель проекта
+## 🔍 Main project components
 
-Цель — продемонстрировать настройку **автоматической сборки**, **тестирования** и **публикации Docker-образов** в Docker Hub, а также локальный запуск сервисов через Docker Compose.
+The project includes three containerized modules:
 
-Проект будет полезен:
+- **Backend**: Flask application (Python API)
+- **Frontend**: Node.js web interface (Express)
+- **Reverse Proxy**: Nginx-based server
 
-- 🔰 **Новичкам** — для изучения **DevOps**-практик, **GitHub Actions** и контейнеризации
-- 🧑‍💻 **Специалистам** — как шаблон для построения надёжного и масштабируемого **CI/CD**-процесса
+---
+
+## 🎯 Project goal
+
+The goal is to demonstrate the setup of **automatic build**, **testing** and **publishing Docker images** to Docker Hub, as well as local launch of services via Docker Compose.
+
+The project will be useful:
+
+- 🔰 **Beginners** — to study **DevOps** practices, **GitHub Actions** and containerization
+- 🧑‍💻 **Specialists** — as a template for building a reliable and scalable **CI/CD** process
