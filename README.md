@@ -4,7 +4,7 @@ A beginner-friendly yet production-grade **CI/CD** demo project using **Docker**
 
 ---
 
-![CI](https://github.com/Hackitect7/devops-docker-project/actions/workflows/docker-ci.yml/badge.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/hackitect7/flask-api) ![Image Size](https://img.shields.io/docker/image-size/hackitect7/flask-api/latest) ![Last Commit](https://img.shields.io/github/last-commit/Hackitect7/devops-docker-project) ![License](https://img.shields.io/github/license/Hackitect7/devops-docker-project) ![Issues](https://img.shields.io/github/issues/Hackitect7/devops-docker-project)
+![Stars](https://img.shields.io/github/stars/Hackitect7/devops-docker-project) ![CI](https://github.com/Hackitect7/devops-docker-project/actions/workflows/docker-ci.yml/badge.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/hackitect7/flask-api) ![Image Size](https://img.shields.io/docker/image-size/hackitect7/flask-api/latest) ![Last Commit](https://img.shields.io/github/last-commit/Hackitect7/devops-docker-project) ![License](https://img.shields.io/github/license/Hackitect7/devops-docker-project) ![Issues](https://img.shields.io/github/issues/Hackitect7/devops-docker-project)
 
 ---
 
@@ -80,3 +80,4 @@ Pull requests are welcome. For major changes, please open an issue first.See [CO
 ✉️ **Email:** [papulya2012@gmail.com](mailto:papulya2012@gmail.com)
 
 💬 **Telegram:** [@manfred251278](https://t.me/Manfred251278)
+
